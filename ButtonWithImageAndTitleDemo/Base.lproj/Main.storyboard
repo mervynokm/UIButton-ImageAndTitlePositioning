@@ -20,15 +20,21 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCN-wL-PDT">
                                 <rect key="frame" x="285" y="285" width="30" height="30"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OA-GC-Vvg">
+                                <rect key="frame" x="285" y="550" width="30" height="30"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3OA-GC-Vvg" secondAttribute="bottom" constant="20" id="e00-Mq-Qmh"/>
                             <constraint firstAttribute="centerX" secondItem="oCN-wL-PDT" secondAttribute="centerX" id="h8d-D2-HBT"/>
+                            <constraint firstAttribute="centerX" secondItem="3OA-GC-Vvg" secondAttribute="centerX" id="kCB-kS-sca"/>
                             <constraint firstAttribute="centerY" secondItem="oCN-wL-PDT" secondAttribute="centerY" id="uT7-pU-ecR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="button" destination="oCN-wL-PDT" id="2FG-eA-0lV"/>
+                        <outlet property="thirdButton" destination="3OA-GC-Vvg" id="uIb-bt-phX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

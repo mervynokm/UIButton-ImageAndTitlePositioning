@@ -29,19 +29,14 @@
 
 import UIKit
 
-enum Position {
-    case Top
-    case Bottom
-    case Left
-    case Right
-}
-
 extension UIButton {
+    
 //    This method sets an image and title for a UIButton and
 //    repositions the titlePosition with respect to the button image.
 //    Add additionalSpacing between the button image & title as required
-    
-    func set(image anImage: UIImage?, title: NSString!, titlePosition: Position, additionalSpacing: CGFloat, state: UIControlState){
+//    For titlePosition, the function only respects UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft and UIViewContentModeRight
+//    All other titlePositions are ignored
+    @objc func set(image anImage: UIImage?, title: NSString!, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState){
         self.imageView?.contentMode = .Center
         self.setImage(anImage?, forState: state)
         
@@ -51,7 +46,7 @@ extension UIButton {
         self.setTitle(title?, forState: state)
     }
     
-    private func positionLabelRespectToImage(title: NSString, position: Position, spacing: CGFloat) {
+    private func positionLabelRespectToImage(title: NSString, position: UIViewContentMode, spacing: CGFloat) {
         let imageSize = self.imageRectForContentRect(self.frame)
         let titleFont = self.titleLabel?.font!
         let titleSize = title.sizeWithAttributes([NSFontAttributeName: titleFont!])
@@ -71,6 +66,9 @@ extension UIButton {
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -(titleSize.width * 2 + spacing))
         case .Right:
             titleInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -spacing)
+            imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        default:
+            titleInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
