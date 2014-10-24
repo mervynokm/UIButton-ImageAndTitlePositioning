@@ -7,7 +7,7 @@ A Swift-based UIButton extension to enable a button title positioning with respe
 
 <br/> 
 
-![image](https://github.com/mervynokm/UIButton-ImageAndTitlePositioning/blob/master/preview.png)
+![image](https://github.com/mervynokm/UIButton-ImageAndTitlePositioning/blob/master/preview.png = 320x568)
 
 **How to Use it**
 _________
