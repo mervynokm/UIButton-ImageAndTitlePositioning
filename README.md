@@ -1,7 +1,7 @@
 UIButton-ImageAndTitlePositioning
 =================================
 <br/> 
-Copyright (c) 2014 mervynokm. All rights reserved.
+Copyright (c) 2014 mervynokm. All rights reserved. 
 <br/> <br/> 
 A Swift-based UIButton extension to enable a button title positioning with respect to the button image.
 
