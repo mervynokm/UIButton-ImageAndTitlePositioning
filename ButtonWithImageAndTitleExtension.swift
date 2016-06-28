@@ -31,26 +31,47 @@ import UIKit
 
 extension UIButton {
     
-//    This method sets an image and title for a UIButton and
-//    repositions the titlePosition with respect to the button image.
-//    Add additionalSpacing between the button image & title as required
-//    For titlePosition, the function only respects UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft and UIViewContentModeRight
-//    All other titlePositions are ignored
-    @objc func set(image anImage: UIImage?, title: NSString!, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState){
+    //    This method sets an image and title for a UIButton and
+    //    repositions the titlePosition with respect to the button image.
+    //    Add additionalSpacing between the button image & title as required
+    //    For titlePosition, the function only respects UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft and UIViewContentModeRight
+    //    All other titlePositions are ignored
+    @objc func set(image anImage: UIImage?, title: String, at position: UIViewContentMode, width spacing: CGFloat, state: UIControlState){
         self.imageView?.contentMode = .Center
-        self.setImage(anImage?, forState: state)
+        self.setImage(anImage, forState: state)
         
-        positionLabelRespectToImage(title!, position: titlePosition, spacing: additionalSpacing)
+        adjust(title: title, at: position, with: spacing)
         
         self.titleLabel?.contentMode = .Center
-        self.setTitle(title?, forState: state)
+        self.setTitle(title, forState: state)
     }
     
-    private func positionLabelRespectToImage(title: NSString, position: UIViewContentMode, spacing: CGFloat) {
+    @objc func set(image anImage: UIImage?, attributedTitle title: NSAttributedString, at position: UIViewContentMode, width spacing: CGFloat, state: UIControlState){
+        self.imageView?.contentMode = .Center
+        self.setImage(anImage, forState: state)
+        
+        adjust(title: title, at: position, with: spacing)
+        
+        self.titleLabel?.contentMode = .Center
+        self.setAttributedTitle(title, forState: state)
+    }
+    
+    private func adjust(title title: NSAttributedString, at position: UIViewContentMode, with spacing: CGFloat) {
+        let imageSize = self.imageRectForContentRect(self.frame)
+        let titleSize = title.size()
+        
+        arrange(titleSize: titleSize, imageSize: imageSize, at: position, with: spacing)
+    }
+    
+    private func adjust(title title: NSString, at position: UIViewContentMode, with spacing: CGFloat) {
         let imageSize = self.imageRectForContentRect(self.frame)
         let titleFont = self.titleLabel?.font!
         let titleSize = title.sizeWithAttributes([NSFontAttributeName: titleFont!])
         
+        arrange(titleSize: titleSize, imageSize: imageSize, at: position, with: spacing)
+    }
+    
+    private func arrange(titleSize titleSize:CGSize,imageSize:CGRect, at position:UIViewContentMode,with spacing:CGFloat) {
         var titleInsets: UIEdgeInsets
         var imageInsets: UIEdgeInsets
         

@@ -15,13 +15,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        button.set(image: UIImage(named: "shout"), title: "Shout", titlePosition: .Top, additionalSpacing: 30.0, state: .Normal)
-        thirdButton.set(image: UIImage(named: "shout"), title: "This is an XIB button", titlePosition: .Bottom, additionalSpacing: 10.0, state: .Normal)
+        button.set(image: UIImage(named: "shout"), title: "Shout", at: .Top, width: 30.0, state: .Normal)
+        thirdButton.set(image: UIImage(named: "shout"), title: "This is an XIB button", at: .Bottom, width: 10.0, state: .Normal)
         
-        var secondButton = UIButton.buttonWithType(.System) as UIButton
+        let secondButton = UIButton(type: .System)
         secondButton.frame = CGRectMake(0, 50, 100, 400)
         secondButton.center = CGPointMake(view.frame.size.width/2, 50)
-        secondButton.set(image: UIImage(named: "settings"), title: "Settings", titlePosition: .Left, additionalSpacing: 0.0, state: .Normal)
+        let attr = [
+            NSFontAttributeName:UIFont(name:"Helvetica", size: 14)!,
+            NSForegroundColorAttributeName: UIColor.greenColor()
+                    ]
+        let title = NSAttributedString(string: "Settings", attributes: attr)
+        secondButton.tintColor = UIColor.redColor()
+        secondButton.set(image: UIImage(named: "settings"), attributedTitle: title, at: .Left, width: 0.0, state: .Normal)
         view.addSubview(secondButton)
     }
 
