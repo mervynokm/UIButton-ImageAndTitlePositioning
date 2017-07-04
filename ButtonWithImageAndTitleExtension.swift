@@ -36,33 +36,35 @@ extension UIButton {
 //    Add additionalSpacing between the button image & title as required
 //    For titlePosition, the function only respects UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft and UIViewContentModeRight
 //    All other titlePositions are ignored
-    @objc func set(image anImage: UIImage?, title: NSString!, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState){
-        self.imageView?.contentMode = .center
-        self.setImage(anImage, for: state)
+    @objc func set(image anImage: UIImage?, title: String, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState){
+        imageView?.contentMode = .center
+        setImage(anImage, for: state)
         
-        positionLabelRespectToImage(title: title!, position: titlePosition, spacing: additionalSpacing)
+        positionLabelRespectToImage(title: title, position: titlePosition, spacing: additionalSpacing)
         
-        self.titleLabel?.contentMode = .center
-        self.setTitle(title as? String, for: state)
+        titleLabel?.contentMode = .center
+        setTitle(title, for: state)
     }
     
-    private func positionLabelRespectToImage(title: NSString, position: UIViewContentMode, spacing: CGFloat) {
-        let imageSize = self.imageRect(forContentRect: self.frame)
-        let titleFont = self.titleLabel?.font!
-        let titleSize = title.size(attributes: [NSFontAttributeName: titleFont!])
+    private func positionLabelRespectToImage(title: String, position: UIViewContentMode, spacing: CGFloat) {
+        let imageRect: CGRect = self.imageRect(forContentRect: frame)
+        
+        // Use predefined font, otherwise use the default
+        let titleFont: UIFont = titleLabel?.font ?? UIFont()
+        let titleSize: CGSize = title.size(attributes: [NSFontAttributeName: titleFont])
         
         var titleInsets: UIEdgeInsets
         var imageInsets: UIEdgeInsets
         
         switch (position){
         case .top:
-            titleInsets = UIEdgeInsets(top: -(imageSize.height + titleSize.height + spacing), left: -(imageSize.width), bottom: 0, right: 0)
+            titleInsets = UIEdgeInsets(top: -(imageRect.height + titleSize.height + spacing), left: -(imageRect.width), bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
         case .bottom:
-            titleInsets = UIEdgeInsets(top: (imageSize.height + titleSize.height + spacing), left: -(imageSize.width), bottom: 0, right: 0)
+            titleInsets = UIEdgeInsets(top: (imageRect.height + titleSize.height + spacing), left: -(imageRect.width), bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
         case .left:
-            titleInsets = UIEdgeInsets(top: 0, left: -(imageSize.width * 2), bottom: 0, right: 0)
+            titleInsets = UIEdgeInsets(top: 0, left: -(imageRect.width * 2), bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -(titleSize.width * 2 + spacing))
         case .right:
             titleInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -spacing)
