@@ -44,8 +44,8 @@ class ViewController: UIViewController {
         secondButton.frame = CGRect(x: 0, y: 50, width: 100, height: 400)
         secondButton.center = CGPoint(x: view.frame.size.width/2, y: 50)
         let attr = [
-            NSFontAttributeName:UIFont(name:"Helvetica", size: 14)!,
-            NSForegroundColorAttributeName: UIColor.green
+            NSAttributedStringKey.font:UIFont(name:"Helvetica", size: 14)!,
+            NSAttributedStringKey.foregroundColor: UIColor.green
                     ]
         let title = NSAttributedString(string: "Settings", attributes: attr)
         secondButton.tintColor = UIColor.red

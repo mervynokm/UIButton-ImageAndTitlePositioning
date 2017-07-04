@@ -83,7 +83,7 @@ extension UIButton {
         
         // Use predefined font, otherwise use the default
         let titleFont: UIFont = titleLabel?.font ?? UIFont()
-        let titleSize: CGSize = title.size(attributes: [NSFontAttributeName: titleFont])
+        let titleSize: CGSize = title.size(withAttributes: [NSAttributedStringKey.font: titleFont])
         
         arrange(titleSize: titleSize, imageRect: imageRect, atPosition: position, withSpacing: spacing)
     }
@@ -93,7 +93,7 @@ extension UIButton {
         
         // Use predefined font, otherwise use the default
         let titleFont: UIFont = titleLabel?.font ?? UIFont()
-        let titleSize: CGSize = title.size(attributes: [NSFontAttributeName: titleFont])
+        let titleSize: CGSize = title.size(withAttributes: [NSAttributedStringKey.font: titleFont])
         
         arrange(titleSize: titleSize, imageRect: imageRect, atPosition: position, withSpacing: spacing)
     }
