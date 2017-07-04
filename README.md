@@ -18,8 +18,15 @@ In a Swift project no further import is required (but I'm sure you alreay know t
 
 ---
 ```
-set(image: UIImage?, title: NSString!, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState)
+set(image: UIImage?, title: String, titlePosition: UIViewContentMode, additionalSpacing: CGFloat, state: UIControlState)
 ```
+
+or for attributed strings,
+
+````
+set(image: UIImage?, attributedTitle title: NSAttributedString, at position: UIViewContentMode, width spacing: CGFloat, state: UIControlState)
+````
+
 <br/> 
 In an Objective-C project, all you have to do is add the file into your project and let XCode generate the necessary Swift files! Then,
 
@@ -35,9 +42,8 @@ and
 ```
 
 Ta-dah!!!!
-Please feel free to use this and improve it at your own accord! Please do share any feedback you may have as well!
 
 **Version**
 _________
-1.0
+1.1
 
