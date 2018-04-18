@@ -9,3 +9,4 @@ build/
 *.xcodeproj/*.mode2v3
 *.xcodeproj/*.pbxuser
 xcuserdata/
+xcshareddata/
