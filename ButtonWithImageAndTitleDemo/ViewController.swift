@@ -38,8 +38,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         button.set(image: #imageLiteral(resourceName: "shout"), title: "Shout", titlePosition: .top, additionalSpacing: 30.0, state: .normal)
-        thirdButton.set(image: #imageLiteral(resourceName: "shout"), title: "This is an XIB button", titlePosition: .bottom, additionalSpacing: 10.0, state: .normal)
-        
+        thirdButton.set(image: #imageLiteral(resourceName: "shout"), title: "This is an XIB button", titlePosition: .left, additionalSpacing: 10.0, state: .normal)
         let secondButton = UIButton(type: .system)
         secondButton.frame = CGRect(x: 0, y: 50, width: 100, height: 400)
         secondButton.center = CGPoint(x: view.frame.size.width/2, y: 50)
@@ -48,8 +47,8 @@ class ViewController: UIViewController {
             NSAttributedStringKey.foregroundColor: UIColor.green
                     ]
         let title = NSAttributedString(string: "Settings", attributes: attr)
-        secondButton.tintColor = UIColor.red
-        secondButton.set(image: UIImage(named: "settings"), attributedTitle: title, at: .left, width: 0.0, state: .normal)
+        secondButton.tintColor = .red
+        secondButton.set(image: #imageLiteral(resourceName: "settings"), attributedTitle: title, at: .left, width: 0.0, state: .normal)
         view.addSubview(secondButton)
     }
 
