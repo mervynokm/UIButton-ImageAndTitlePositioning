@@ -49,7 +49,7 @@ import UIKit
     ///   - titlePosition: UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft or UIViewContentModeRight
     ///   - additionalSpacing: Spacing between image and title
     ///   - state: State to apply this behaviour
-    @objc func set(image: UIImage?, title: String, titlePosition: Position, additionalSpacing: CGFloat, state: UIControlState){
+    @objc func set(image: UIImage?, title: String, titlePosition: Position, additionalSpacing: CGFloat, state: UIControl.State){
         imageView?.contentMode = .center
         setImage(image, for: state)
         setTitle(title, for: state)
@@ -68,7 +68,7 @@ import UIKit
     ///   - titlePosition: UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft or UIViewContentModeRight
     ///   - additionalSpacing: Spacing between image and title
     ///   - state: State to apply this behaviour
-    @objc func set(image: UIImage?, attributedTitle title: NSAttributedString, at position: Position, width spacing: CGFloat, state: UIControlState){
+    @objc func set(image: UIImage?, attributedTitle title: NSAttributedString, at position: Position, width spacing: CGFloat, state: UIControl.State){
         imageView?.contentMode = .center
         setImage(image, for: state)
         
@@ -86,7 +86,7 @@ import UIKit
         
         // Use predefined font, otherwise use the default
         let titleFont: UIFont = titleLabel?.font ?? UIFont()
-        let titleSize: CGSize = title.size(withAttributes: [NSAttributedStringKey.font: titleFont])
+        let titleSize: CGSize = title.size(withAttributes: [NSAttributedString.Key.font: titleFont])
         
         arrange(titleSize: titleSize, imageRect: imageRect, atPosition: position, withSpacing: spacing)
     }
